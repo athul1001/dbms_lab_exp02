@@ -13,7 +13,7 @@ INSERT INTO branch(branch_id,branch_name,city) VALUES
 INSERT INTO customer(cust_id,cust_name,city) VALUES (10034,'Mic Ronald','Bombay'),(10052,'Sunil Ray','Nandgaon'),(10053,'George David','Bangalore'),(10012,'David John','Nagpur'),(10021,'Sony Issac','Nagpur'),(10013,'Issac Collins','Brooklyn'),(10064,'Collins Gray','Brooklyn'),(10074,'Jennifer May','Bangalore'),(10031,'Mary Jane','Nagpur'),(10083,'Peter Hant','Nandgaon'),(10099, 'Gracy Lark','Bombay'),(10098,'Elizabeth Bennt','Brooklyn'),(10089,'Darcy Drack','Bangalore'),(10097,'Albert Bennt','Nagpur'),(10079,'Lizzy Richard','Bombay'),(10095,'Rossy John','Nandgaon');
 
 INSERT INTO deposit(acc_no,cust_id,branch_id,amount,date) VALUES (124001,10098,621,10000.00,'2021-01-02'),(124032,10013,34,50000.00,'2020-11-12'),(124030,10083,362,60000.00,'2021-11-12'),(124091,10021,834,30000.00,'2020-11-12'),(124009,10053,62,90000.00,'2021-02-02'),(124035,10012,734,80000.00,'2020-11-12'),(124058,10074,62,83000.00,'2021-08-12'),(124086,10052,362,30000.00,'2020-11-12');
-INSERT INTO borrow (loan_no,cust_id,branch_id,amount,date) VALUES (142002,10064,34,20034.00,'2020-11-12'),(142024,10052,364,30300.00,'2020-11-12'),(142059,10099,4,80005.00,'2020-11-12'),(142094,10034,294,6030.00,'2020-11-12'),(142049,10089,62,9503.00,'2020-11-12'),(142093,10097,734,10330.00,'2020-11-12'),(142039,10079,294,2000.00,'2020-11-12'),(142099,10095,362,3000.00,'2020-11-12');
+INSERT INTO borrow (loan_no,cust_id,branch_id,amount,date) VALUES (142002,10064,34,20034.00,'2020-11-12'),(142024,10052,364,30300.00,'2020-11-12'),(142059,10099,4,80005.00,'2020-11-12'),(142094,10034,294,12030.00,'2020-11-12'),(142049,10089,62,9503.00,'2020-11-12'),(142093,10097,734,10330.00,'2020-11-12'),(142039,10079,294,2000.00,'2020-11-12'),(142099,10095,362,3000.00,'2020-11-12');
 
 .headers on
 .mode column
@@ -47,8 +47,11 @@ SELECT  ROUND (AVG(amount),2) AS average FROM borrow;
 
 SELECT cust_name,branch_name FROM customer NATURAL JOIN deposit NATURAL JOIN branch WHERE cust_name LIKE 'S%' AND branch_name LIKE 's%';
 
---10.Display the customers having a loan amount between 5000 and 15000 in alphabetical order
+--10.Display the customers having a loan amount between 5000 and 15000 in discending order of their loan amounts
+
+SELECT cust_name FROM borrow NATURAL JOIN customer  WHERE amount BETWEEN 5000 AND 15000 ORDER BY amount DESC;
+--11.Display the customers having a loan amount between 5000 and 15000 in alphabetical order
 
 SELECT cust_name FROM borrow NATURAL JOIN customer  WHERE amount BETWEEN 5000 AND 15000 ORDER BY cust_name ASC;
 
---11.Display 
+--12.List the total  loan which is given from each branch
