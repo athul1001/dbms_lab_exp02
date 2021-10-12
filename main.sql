@@ -15,8 +15,6 @@ INSERT INTO customer(cust_id,cust_name,city) VALUES (10034,'Mic Ronald','Brookly
 INSERT INTO deposit(acc_no,cust_id,branch_id,amount,date) VALUES (124001,10098,294,10000.00,'2021-01-02'),(124032,10013,4,50000.00,'2020-11-12'),(124030,10083,362,60000.00,'2014-11-12'),(124091,10021,834,30000.00,'2020-11-12'),(124009,10053,62,90000.00,'2021-02-02'),(124035,10012,734,80000.00,'2020-11-12'),(124058,10074,62,83000.00,'2014-08-12'),(124086,10052,362,30000.00,'2020-11-12'),(124010,10097,621,20000.00,'2014-09-02');
 INSERT INTO borrow (loan_no,cust_id,branch_id,amount,date) VALUES (142002,10064,34,20034.00,'2020-11-12'),(142024,10052,362,30300.00,'2020-11-12'),(142059,10099,4,80005.00,'2020-11-12'),(142094,10034,352,12030.00,'2020-11-12'),(142049,10089,62,9503.00,'2020-11-12'),(142093,10097,734,10330.00,'2020-11-12'),(142039,10079,621,60000.00,'2020-11-12'),(142099,10095,362,130000.00,'2020-11-12'),(142010,10012,834,30000.00,'2020-01-02');
 
-.headers on
-.mode column
 --2.Display the details of all customers having a loanamount greater than 50000
 SELECT cust_id,cust_name,amount FROM borrow NATURAL JOIN customer WHERE amount>=50000;
 
@@ -107,4 +105,7 @@ SELECT b.branch_name , MAX(bo.amount) FROM branch AS b INNER JOIN borrow AS bo O
 
   SELECT COUNT(cust_id) AS count_1 FROM customer  WHERE cust_id IN 
     (SELECT cust_id FROM deposit INTERSECT SELECT cust_id FROM borrow);
+    
+    
+    
    
