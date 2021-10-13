@@ -106,10 +106,6 @@ SELECT b.branch_name , MAX(bo.amount) FROM branch AS b INNER JOIN borrow AS bo O
   SELECT COUNT(cust_id) AS count_1 FROM customer  WHERE cust_id IN 
     (SELECT cust_id FROM deposit INTERSECT SELECT cust_id FROM borrow);
     
---26. Find the number of customers who are desposited as well as borrowers.
 
-
-  SELECT COUNT(cust_id) AS count_1 FROM customer  WHERE cust_id IN 
-    (SELECT cust_id FROM deposit INTERSECT SELECT cust_id FROM borrow);
     
    
